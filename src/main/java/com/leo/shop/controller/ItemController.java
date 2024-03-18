@@ -47,8 +47,19 @@ public class ItemController {
 	String detail(@PathVariable("id") Long id, Model model) {
 		itemService.getDetail(id, model);
 		return "detail.html";
-
-		
+	}
+	@GetMapping("/edit/{id}")
+	String edit(@PathVariable("id") Long id, Model model) {
+		itemService.getUpdate(model, id);
+			return "edit.html";
+	}
+	@PostMapping("/update")
+	String updatePost(@RequestParam(name="id") Long id,
+						@RequestParam(name="title") String title,
+						@RequestParam(name="price") Integer price) {
+		//update 으로 포스트 요청을 받아서 데이터 베이스에 있는걸 업데이트 해주는거임 저장이 아니라
+			itemService.updateItems(id, title, price);
+			return "redirect:/list";
 	}
 	@PostMapping("/add")
 	String addPost(@RequestParam(name="title") String title,

@@ -13,6 +13,7 @@
   		<div>
    		 <a th:href="@{ '/detail/' + ${i.id}}"><h4 th:text="${i.title}"></h4></a>
    		 <p th:text="${i.price} + '원' "></p>
+		 <a th:href="@{ '/edit/' + ${i.id}}">수정</a>
  		 </div>
 	</div>
 </body>
