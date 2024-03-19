@@ -26,6 +26,8 @@ public class ItemService {
 		item.setPrice(price);
 		itemRepository.save(item);
 	}
+	
+	
 	public void getDetail(@RequestParam("id") Long id, Model model) {
 		Optional<Item> result = itemRepository.findById(id);
 		if ( result.isPresent()) {
@@ -33,11 +35,15 @@ public class ItemService {
 			model.addAttribute("data", result.get());
 		}
 	}
+	
+	
 	public void getItems(Model model) {
 		List<Item> result = itemRepository.findAll();
 		//여기다가 겟 함수로 받아온거 저장해야됨
 		model.addAttribute("items",result);
 	}
+	
+	
 	public void updateItems(Long id, String title, Integer price) {
 		Item item = new Item();
 		item.setId(id);
@@ -47,6 +53,8 @@ public class ItemService {
 		System.out.println(price);
 		itemRepository.save(item);
 	}
+	
+	
 	public void getUpdate(Model model, @RequestParam("id") Long id) {
 		Optional<Item> result = itemRepository.findById(id);
 		if ( result.isPresent() ) {

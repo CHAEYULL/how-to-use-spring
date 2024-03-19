@@ -9,7 +9,7 @@
 <body>
     <div th:replace="~{ nav.html::navbar }"></div>
     <form action="/update" method="POST">
-  		<input name="id" th:value="${data.id}" style="display: none">
+  		<input name="id" th:value="${data.id}" >
     	<input name="title" th:value="${data.title}">
         <input name="price" th:value="${data.price}">
     	<button type="submit">작성</button>

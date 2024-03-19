@@ -3,9 +3,10 @@ package com.leo.shop.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
-	//private final ItemRepository itemRepository;// 얘가 데이터들어있는 전체 통이라고 생각하면됨 꺼낼때도 여기서 꺼내고 추가할때도 여기다가 추가하는거임
+	private final ItemRepository itemRepository;// 얘가 데이터들어있는 전체 통이라고 생각하면됨 꺼낼때도 여기서 꺼내고 추가할때도 여기다가 추가하는거임
 	private final ItemService itemService;
 	
 //	@Autowired //이렇게 쓰나
@@ -66,6 +67,11 @@ public class ItemController {
 					 @RequestParam(name="price") Integer price) {
 		itemService.saveItemn(title, price);
 		return "redirect:/list";
+	}
+	@DeleteMapping("/delete")
+	ResponseEntity<String> deletePost(@RequestParam("docid") Long docid) {
+		itemRepository.deleteById(docid);
+		return ResponseEntity.status(200).body("삭제완료");
 	}
 	
 }
