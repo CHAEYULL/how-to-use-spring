@@ -20,13 +20,24 @@ public class ItemService {
 	
 	private final ItemRepository itemRepository;
 	
-	public void saveItemn(String title, Integer price) {
+	public void saveItemn(String title, Integer price) throws Exception {
 		Item item = new Item();
 		//item.title = title;
 		//item.price = price;
-		item.setTitle(title);
-		item.setPrice(price);
-		itemRepository.save(item);
+		int priceNum = price;
+		int priceLength = (int)(Math.log10(priceNum)+1);
+		if (title == null || price == null) {
+			System.out.println("어딘가 빼먹고 안썼네");
+			throw new Exception();
+		} else if (title.length() > 40 || priceLength > 100){
+			System.out.println("너무 길어");
+			throw new Exception();
+		} else {
+			item.setTitle(title);
+			item.setPrice(price);
+			itemRepository.save(item);
+			itemRepository.save(item);
+		}
 	}
 	
 	
@@ -46,14 +57,22 @@ public class ItemService {
 	}
 	
 	
-	public void updateItems(Long id, String title, Integer price) {
+	public void updateItems(Long id, String title, Integer price) throws Exception {
 		Item item = new Item();
-		item.setId(id);
-		item.setTitle(title);
-		item.setPrice(price);
-		System.out.println(title);
-		System.out.println(price);
-		itemRepository.save(item);
+		int priceNum = price;
+		int priceLength = (int)(Math.log10(priceNum)+1);
+		if (title == null || price == null) {
+			System.out.println("어딘가 빼먹고 안썼네");
+			throw new Exception();
+		} else if (title.length() > 40 || priceLength > 100){
+			System.out.println("너무 길어");
+			throw new Exception();
+		} else {
+			item.setTitle(title);
+			item.setPrice(price);
+			itemRepository.save(item);
+			itemRepository.save(item);
+		}
 	}
 	
 	

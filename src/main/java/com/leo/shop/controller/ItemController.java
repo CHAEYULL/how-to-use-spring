@@ -62,14 +62,14 @@ public class ItemController {
 	@PostMapping("/update")
 	String updatePost(@RequestParam(name="id") Long id,
 						@RequestParam(name="title") String title,
-						@RequestParam(name="price") Integer price) {
+						@RequestParam(name="price") Integer price) throws Exception {
 		//update 으로 포스트 요청을 받아서 데이터 베이스에 있는걸 업데이트 해주는거임 저장이 아니라
 			itemService.updateItems(id, title, price);
 			return "redirect:/list";
 	}
 	@PostMapping("/add")
 	String addPost(@RequestParam(name="title") String title,
-					 @RequestParam(name="price") Integer price) {
+					 @RequestParam(name="price") Integer price) throws Exception {
 		itemService.saveItemn(title, price);
 		return "redirect:/list";
 	}
