@@ -3,11 +3,13 @@ package com.leo.shop.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.leo.shop.model.Item;
+import com.leo.shop.model.User;
 import com.leo.shop.repository.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -61,4 +63,15 @@ public class ItemService {
 			model.addAttribute("data", result.get());
 		}
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
