@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div th:replace="~{ nav.html::navbar }"></div>
+    <form action="/update" method="POST">
+  		<input name="id" th:value="${data.id}" style="display:none">
+    	<input name="title" th:value="${data.title}">
+        <input name="price" th:value="${data.price}">
+    	<button type="submit">작성</button>
+    </form>
+</body>
+</html>

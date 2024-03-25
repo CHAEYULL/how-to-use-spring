@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div th:replace="~{ nav.html::navbar }"></div>
+    
+ 		<h1>마이페이지임</h1>
+ 		<div sec:authentication="principal"></div>
+ 		<div sec:authorize="hasAuthority('일반유저')">
+ 			<h4>이 유저는 일반유저 권한임</h4>
+ 		</div>
+ 		<div sec:authorize="isAuthenticated()">
+ 			<h4>로그인 한 유저만 볼 수 있음</h4>
+ 		</div>
+ 		<div sec:authorize="isAnonymous()">
+ 			<h4>로그아웃 유저만 볼수있음</h4>
+ 		</div>
+</body>
+</html>
